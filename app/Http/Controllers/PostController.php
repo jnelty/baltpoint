@@ -28,8 +28,8 @@ class PostController extends Controller
         $post = Post::create([
             'title' => $validated['title'],
             'content' => $validated['content'],
+            'user_id' => Auth::id(),
         ]);
-        $post->user()->associate(Auth::user());
 
         return redirect()->route('posts.create')->with('success', 'Пост успешно создан!');
     }
